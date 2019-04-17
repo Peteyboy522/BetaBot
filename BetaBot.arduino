@@ -1,18 +1,25 @@
 //Battle Bot
 
-void setup(){
-
-
-
-
+#include <Stepper.h>
+const int stepsPerRevolution = 200;
+Stepper myStepper (stepsPerRevolution,10,11,12,13);
+Stepper myStepper2 (stepsPerRevolution,2,3,4,5);
+void setup() {
+  // put your setup code here, to run once:
+  myStepper.setSpeed(50); //Sets the RPM of the stepper motor
+  myStepper2.setSpeed(50);
+  Serial.begin(9600);
 }
 
-
-void loop(){
-
-
-
-
-
-
+void powerBoth(int steps)
+{
+  myStepper.step(1);
+  myStepper2.step(1);
 }
+
+void loop() {
+  // put your main code here, to run repeatedly:
+Serial.println("clockwise");
+powerBoth(2000);
+}
+
